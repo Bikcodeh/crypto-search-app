@@ -46,7 +46,7 @@ function App() {
 
   return (
     <Container>
-      <Image src="/img/imagen-criptos.png" alt="Crypto images" />
+      <Image src="/assets/img/imagen-criptos.png" alt="Crypto images" />
       <div>
         <Heading>Quote Cryptocurrencies Instantly</Heading>
         <Form />
