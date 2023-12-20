@@ -31,7 +31,7 @@ const SelectField = React.memo(({ label, options, onSelect }) => {
       <Select value={selectedValue} onChange={handleOnSelect}>
         <option value="">Select</option>
         {options.map((option) => (
-          <option key={option.id} value={option.name}>
+          <option key={option.id} value={option.id}>
             {option.name}
           </option>
         ))}
