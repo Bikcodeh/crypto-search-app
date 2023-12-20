@@ -59,7 +59,7 @@ export const Form = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (formData.coin === "" || formData.currency === "") {
-      setHasError("All field are required.");
+      setHasError("All fields are required.");
       return;
     }
     setHasError(null);
