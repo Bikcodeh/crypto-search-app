@@ -19,6 +19,7 @@ const ButtonSubmit = styled.button`
   font-size: 20px;
   border-radius: 5px;
   margin-top: 20px;
+  margin-bottom: 20px;
   transition: background-color 0.3s ease;
   &:hover {
     background-color: #7a7dfe;
@@ -35,6 +36,7 @@ export const Form = () => {
   const [hasError, setHasError] = useState(null);
   const [coinsApi, setCoinsApi] = useState([]);
   const [formData, setFormData] = useState(initialFormData);
+  const [loadingCoinInfo, setLoadingCoinInfo] = useState(false)
 
   const { loading, data: dataAxios, error } = useAxios(BASE_URL);
   const setData = useCryptoStore((state) => state.setData);
@@ -66,6 +68,8 @@ export const Form = () => {
 
   const searchData = async () => {
     try {
+      setData(null)
+      setLoadingCoinInfo(true);
       const resp = await fetch(
         `https://min-api.cryptocompare.com/data/pricemultifull?fsyms=${formData.coin}&tsyms=${formData.currency}`
       );
@@ -75,6 +79,8 @@ export const Form = () => {
       setHasError(null);
     } catch (error) {
       setHasError("An error happened fetching data, please try again.");
+    } finally {
+      setLoadingCoinInfo(false)
     }
   };
 
@@ -110,6 +116,9 @@ export const Form = () => {
         onSelect={onSelectCoin}
       />
       <ButtonSubmit onClick={handleSubmit}>Search</ButtonSubmit>
+      {
+        loadingCoinInfo && <Loading />
+      }
     </form>
   );
 };

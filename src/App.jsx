@@ -2,6 +2,7 @@ import styled from "@emotion/styled";
 import { Form } from "./components/Form";
 import { useCryptoStore } from "./store/store";
 import { useEffect } from "react";
+import CoinData from "./components/CoinData";
 
 const Container = styled.div`
   max-width: 900px;
@@ -41,20 +42,15 @@ const Heading = styled.h1`
 `;
 
 function App() {
-
   const data = useCryptoStore((state) => state.data);
 
-  useEffect(() => {
-   console.log(data)
-  }, [data])
-  
-  
   return (
     <Container>
       <Image src="/img/imagen-criptos.png" alt="Crypto images" />
       <div>
         <Heading>Quote Cryptocurrencies Instantly</Heading>
         <Form />
+        {data && <CoinData />}
       </div>
     </Container>
   );
