@@ -43,7 +43,7 @@ function App() {
     <Container>
       <Image src="/img/imagen-criptos.png" alt="Crypto images" />
       <div>
-        <Heading>From app</Heading>
+        <Heading>Quote Cryptocurrencies Instantly</Heading>
         <Form />
       </div>
     </Container>
