@@ -1,8 +1,34 @@
-# React + Vite
+# Crypto App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Application made with React to search prices of the cryptos
 
-Currently, two official plugins are available:
+## App Deployed: https://bikcodeh.github.io/crypto-search-app/
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
+- Find current price of the selected crypto
+
+## Stack
+- Custom hooks
+- Communication between components
+- CSS
+- React
+- Axios
+- Fetch Api
+- Javascript
+- Props
+- Responsive design
+- Zustand (State management)
+- styled components
+
+### Requirements to run the project
+- Yarn need to be installed
+- Node need to be installed
+- Having internet connection
+- Yarn install to install all dependencies 
+- Yarn dev
+
+## Sections - Screenshots
+<img src="https://github.com/Bikcodeh/crypto-search-app/blob/main/public/screenshots/initial.png?raw=true" width="800" />
+<img src="https://github.com/Bikcodeh/crypto-search-app/blob/main/public/screenshots/data.png?raw=true" width="800" />
+<img src="https://github.com/Bikcodeh/crypto-search-app/blob/main/public/screenshots/validate.png?raw=true" width="800" />
+<img src="https://github.com/Bikcodeh/crypto-search-app/blob/main/public/screenshots/connection.png?raw=true" width="800" />
