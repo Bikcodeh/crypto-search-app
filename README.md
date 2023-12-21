@@ -15,6 +15,7 @@ Application made with React to search prices of the cryptos
 - Axios
 - Fetch Api
 - Javascript
+- Typescript
 - Props
 - Responsive design
 - Zustand (State management)
