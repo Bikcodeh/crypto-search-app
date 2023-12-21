@@ -165,4 +165,4 @@ Error generating stack: `+i.message+`
     display: block;
     margin: 10px auto 0 auto;
   }
-`;function Q1(){const e=Xo(t=>t.data);return A.jsxs(H1,{children:[A.jsx(V1,{src:"/assets/img/imagen-criptos.png",alt:"Crypto images"}),A.jsxs("div",{children:[A.jsx(W1,{children:"Quote Cryptocurrencies Instantly"}),A.jsx(M1,{}),e&&A.jsx(B1,{})]})]})}dl.createRoot(document.getElementById("root")).render(A.jsx(qo.StrictMode,{children:A.jsx(Q1,{})}));
+`;function Q1(){const e=Xo(t=>t.data);return A.jsxs(H1,{children:[A.jsx(V1,{src:"assets/img/imagen-criptos.png",alt:"Crypto images"}),A.jsxs("div",{children:[A.jsx(W1,{children:"Quote Cryptocurrencies Instantly"}),A.jsx(M1,{}),e&&A.jsx(B1,{})]})]})}dl.createRoot(document.getElementById("root")).render(A.jsx(qo.StrictMode,{children:A.jsx(Q1,{})}));
