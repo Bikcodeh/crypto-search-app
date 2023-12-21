@@ -1,4 +1,10 @@
+import { ReactNode } from 'react'
 import styled from "@emotion/styled";
+
+
+interface Props {
+  children: ReactNode;
+}
 
 const ErrorText = styled.div`
   background-color: #b7322c;
@@ -9,7 +15,8 @@ const ErrorText = styled.div`
   font-family: "Lato", sans-serif;
   font-weight: 700;
 `;
-const Error = ({ children }) => {
+
+const Error = ({ children }: Props) => {
   return <ErrorText>{children}</ErrorText>;
 };
 

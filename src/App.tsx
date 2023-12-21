@@ -1,7 +1,6 @@
 import styled from "@emotion/styled";
 import { Form } from "./components/Form";
 import { useCryptoStore } from "./store/store";
-import { useEffect } from "react";
 import CoinData from "./components/CoinData";
 
 const Container = styled.div`

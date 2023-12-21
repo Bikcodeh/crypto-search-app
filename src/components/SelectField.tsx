@@ -1,5 +1,7 @@
+import React, { useState, useCallback, ChangeEvent } from "react";
 import styled from "@emotion/styled";
-import React, { useState, useCallback } from "react";
+
+import { Currency } from "../interfaces";
 
 const Label = styled.label`
   color: #fff;
@@ -17,14 +19,21 @@ const Select = styled.select`
   border-radius: 10px;
 `;
 
-const SelectField = React.memo(({ label, options, onSelect }) => {
-  const [selectedValue, setSelectedValue] = useState("");
+interface Props {
+  label: string;
+  options: Currency[];
+  onSelect: (value: string) => void;
+}
 
-  const handleOnSelect = useCallback((e) => {
+const SelectField = React.memo(({ label, options, onSelect }: Props) => {
+  const [selectedValue, setSelectedValue] = useState<string>("");
+
+  const handleOnSelect = useCallback((e: ChangeEvent<HTMLSelectElement>) => {
     const value = e.target.value;
     setSelectedValue(value);
     onSelect(value);
   }, [options]);
+
   return (
     <>
       <Label>{label}</Label>

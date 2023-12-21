@@ -30,6 +30,7 @@ const Price = styled.p`
 
 const CoinData = () => {
   const data = useCryptoStore((state) => state.data);
+  if (!data) return;
   const { PRICE, HIGHDAY, LOWDAY, CHANGEPCT24HOUR, IMAGEURL, LASTUPDATE } =
     data;
   return (
@@ -43,13 +44,13 @@ const CoinData = () => {
           Highest price of the day: <span>{HIGHDAY}</span>
         </Text>
         <Text>
-          Lowest price of the day: <span>{LOWDAY}</span>
+          Lowest price of the day: <span>{LOWDAY.toString()}</span>
         </Text>
         <Text>
-          Variation last 24 hours: <span>{CHANGEPCT24HOUR}</span>
+          Variation last 24 hours: <span>{CHANGEPCT24HOUR.toString()}</span>
         </Text>
         <Text>
-          Last updated: <span>{LASTUPDATE}</span>
+          Last updated: <span>{LASTUPDATE.toString()}</span>
         </Text>
       </div>
     </Data>
