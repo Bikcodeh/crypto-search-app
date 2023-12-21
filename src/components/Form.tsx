@@ -1,12 +1,13 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, MouseEvent } from "react";
 import styled from "@emotion/styled";
 
 import SelectField from "./SelectField";
-import { BASE_URL, coins } from "../utils";
+import { BASE_URL, currencies } from "../utils";
 import useAxios from "../hooks/useAxios";
 import Loading from "./Loading";
 import Error from "./Error";
 import { useCryptoStore } from "../store/store";
+import { CoinFullDataResponse, CoinResponse, CoinSelect } from "../interfaces";
 
 const ButtonSubmit = styled.button`
   background-color: #9497ff;
@@ -27,36 +28,41 @@ const ButtonSubmit = styled.button`
   }
 `;
 
-const initialFormData = {
+interface FormData {
+  currency: string;
+  coin: string;
+}
+
+const initialFormData: FormData = {
   currency: "",
   coin: "",
 };
 
 export const Form = () => {
-  const [hasError, setHasError] = useState(null);
-  const [coinsApi, setCoinsApi] = useState([]);
-  const [formData, setFormData] = useState(initialFormData);
-  const [loadingCoinInfo, setLoadingCoinInfo] = useState(false)
+  const [hasError, setHasError] = useState<string | null>(null);
+  const [coinsApi, setCoinsApi] = useState<CoinSelect[]>([]);
+  const [formData, setFormData] = useState<FormData>(initialFormData);
+  const [loadingCoinInfo, setLoadingCoinInfo] = useState<boolean>(false)
 
-  const { loading, data: dataAxios, error } = useAxios(BASE_URL);
+  const { loading, data: dataAxios, error } = useAxios<CoinResponse>(BASE_URL);
   const setData = useCryptoStore((state) => state.setData);
   const data = useCryptoStore((state) => state.data);
 
-  const onSelectCurrency = (value) => {
+  const onSelectCurrency = (value: string) => {
     setFormData((state) => ({
       ...state,
       currency: value,
     }));
   };
 
-  const onSelectCoin = (value) => {
+  const onSelectCoin = (value: string) => {
     setFormData((state) => ({
       ...state,
       coin: value,
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     if (formData.coin === "" || formData.currency === "") {
       setHasError("All fields are required.");
@@ -73,7 +79,7 @@ export const Form = () => {
       const resp = await fetch(
         `https://min-api.cryptocompare.com/data/pricemultifull?fsyms=${formData.coin}&tsyms=${formData.currency}`
       );
-      const result = await resp.json();
+      const result: CoinFullDataResponse = await resp.json();
       const coinData = result.DISPLAY[formData.coin][formData.currency];
       setData(coinData);
       setHasError(null);
@@ -107,7 +113,7 @@ export const Form = () => {
       {hasError && <Error>{hasError}</Error>}
       <SelectField
         label="Choose Currency"
-        options={coins}
+        options={currencies}
         onSelect={onSelectCurrency}
       />
       <SelectField
