@@ -47,6 +47,10 @@ export const Form = () => {
   const { loading, data: dataAxios, error } = useAxios<CoinResponse>(BASE_URL);
   const setData = useCryptoStore((state) => state.setData);
   const data = useCryptoStore((state) => state.data);
+  const currencySelected = useCryptoStore((state) => state.currencySelected);
+  const coinSelected = useCryptoStore((state) => state.coinSelected);
+  const setCoinSelected = useCryptoStore((state) => state.setCoinSelected);
+  const setCurrencySelected = useCryptoStore((state) => state.setCurrencySelected);
 
   const onSelectCurrency = (value: string) => {
     setFormData((state) => ({
@@ -68,8 +72,15 @@ export const Form = () => {
       setHasError("All fields are required.");
       return;
     }
+    if (
+      formData.coin === coinSelected &&
+      formData.currency === currencySelected &&
+      data != null
+    ) return;
     setHasError(null);
     searchData();
+    setCoinSelected(formData.coin);
+    setCurrencySelected(formData.currency);
   };
 
   const searchData = async () => {
